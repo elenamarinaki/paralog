@@ -1,0 +1,25 @@
+{
+  "name": "paralog",
+  "version": "1.0.0",
+  "description": "An app to log the unlikely.-",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elenamarinaki/paralog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elenamarinaki/paralog/issues"
+  },
+  "homepage": "https://github.com/elenamarinaki/paralog#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
