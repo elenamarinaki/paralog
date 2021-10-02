@@ -1,7 +1,7 @@
-const entry = {
-  itSeems: 'newItSeems',
-  itIs: 'newItIs',
-  time: new Date(),
-};
+// const entry = {
+//   itSeems: 'newItSeems',
+//   itIs: 'newItIs',
+//   time: new Date(),
+// };
 
-module.exports = { entry };
+// module.exports = { entry };

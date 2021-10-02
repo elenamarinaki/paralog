@@ -3,7 +3,7 @@ const express = require('express');
 const server = express();
 
 // Static file location
-// server.use(express.static('./public'));
+server.use(express.static('./public'));
 
 const entry = {
   itSeems: 'newItSeems',
@@ -11,14 +11,19 @@ const entry = {
   time: new Date(),
 };
 
-server.use(() => console.log('hello'));
+// ⚠  can use only one server.use()
+// server.use(() => console.log('hello'));
 
 server.get('/', (req, res) => {
+  console.log('inside get /');
+
   const html = /*html*/ `
   <h1>Server up & running!!</h1>
   <div>
     <p>${entry.itSeems}</p>
     <p>${entry.itIs}</p>
+    <p>${entry.time}</p>
+
   </div>
   `;
 
