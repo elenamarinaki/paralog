@@ -1,4 +1,5 @@
 const express = require('express');
+const functions = require('./routes/functions');
 
 const server = express();
 
@@ -15,7 +16,7 @@ const entry = {
 // server.use(() => console.log('hello'));
 
 server.get('/', (req, res) => {
-  console.log('inside get /');
+  console.log(`inside get / + ${req.method}!`);
 
   const html = /*html*/ `
   <h1>Server up & running!!</h1>
@@ -28,6 +29,11 @@ server.get('/', (req, res) => {
   `;
 
   res.send(html);
+});
+
+// testing middleware 🧪
+server.get('/log', functions.logger, (request, response) => {
+  response.send('<h1>Hello</h1>');
 });
 
 const PORT = process.env.PORT || 3000;
