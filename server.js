@@ -12,6 +12,24 @@ const entry = {
   time: new Date(),
 };
 
+const items = [
+  {
+    id: 1,
+    name: 'item1',
+    status: 'active',
+  },
+  {
+    id: 2,
+    name: 'item2',
+    status: 'active',
+  },
+  {
+    id: 3,
+    name: 'item3',
+    status: 'inactive',
+  },
+];
+
 // ⚠  can use only one server.use()
 // server.use(() => console.log('hello'));
 
@@ -29,6 +47,11 @@ server.get('/', (req, res) => {
   `;
 
   res.send(html);
+});
+
+// test API
+server.get('/api/items', (req, res) => {
+  res.json(items);
 });
 
 // testing middleware 🧪
