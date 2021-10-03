@@ -1,5 +1,6 @@
 const express = require('express');
 const functions = require('./routes/functions');
+const items = require('./Items');
 
 const server = express();
 
@@ -11,24 +12,6 @@ const entry = {
   itIs: 'newItIs',
   time: new Date(),
 };
-
-const items = [
-  {
-    id: 1,
-    name: 'item1',
-    status: 'active',
-  },
-  {
-    id: 2,
-    name: 'item2',
-    status: 'active',
-  },
-  {
-    id: 3,
-    name: 'item3',
-    status: 'inactive',
-  },
-];
 
 // ⚠  can use only one server.use()
 // server.use(() => console.log('hello'));
