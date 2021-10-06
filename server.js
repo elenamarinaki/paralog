@@ -1,6 +1,7 @@
 const express = require('express');
 const functions = require('./routes/functions');
 const items = require('./Items');
+const { layout } = require('./layout');
 
 const server = express();
 
@@ -28,8 +29,9 @@ server.get('/', (req, res) => {
 
   </div>
   `;
+  const page = layout('First test', html);
 
-  res.send(html);
+  res.send(page);
 });
 
 // test API
