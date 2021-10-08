@@ -2,6 +2,7 @@ const express = require('express');
 const functions = require('./routes/functions');
 const items = require('./Items');
 const { layout } = require('./layout');
+const home = require('./routes/home');
 
 const server = express();
 
@@ -17,7 +18,9 @@ const entry = {
 // ⚠  can use only one server.use()
 // server.use(() => console.log('hello'));
 
-server.get('/', (req, res) => {
+server.get('/', home.get);
+
+server.get('/example', (req, res) => {
   console.log(`inside get / + ${req.method}!`);
 
   const html = /*html*/ `

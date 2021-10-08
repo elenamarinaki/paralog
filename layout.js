@@ -16,18 +16,11 @@ function layout(title, content) {
         </head>
         <body>
             <header>
-                <div class="center width-sm row" id="palettes">
-                    <img src="images/color-wheel.svg" alt="Colour Palette" />
-                    <h1>Colour Generator</h1>
-                </div>
+                <h1>Hello!!</h1>
             </header>
 
             <main class="center width-sm stack-lg">
                 <section>
-                    <div id="sub-header" class="stack-sm">
-                    A fun random colour generator :) Generate new combinations, tap a box
-                    to change its colour and save your palette! On mobile, shake your
-                    device for a surprise &#x1F609;
                     <div class="row">
                         Made by @elenamarinaki
                         <a href="https://github.com/elenamarinaki" target="_blank"
