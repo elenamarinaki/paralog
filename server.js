@@ -6,6 +6,7 @@ const home = require('./routes/home');
 
 const server = express();
 
+const bodyParser = express.urlencoded({ extended: false });
 // Static file location
 server.use(express.static('./public'));
 
@@ -19,6 +20,7 @@ const entry = {
 // server.use(() => console.log('hello'));
 
 server.get('/', home.get);
+server.post('/', bodyParser, home.post);
 
 server.get('/example', (req, res) => {
   console.log(`inside get / + ${req.method}!`);
