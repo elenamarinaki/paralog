@@ -23,7 +23,7 @@ const entry = {
 // server.use(() => console.log('hello'));
 
 server.get('/', home.get);
-server.post('/post', bodyParser, home.post);
+server.post('/', bodyParser, home.post);
 
 // ----------------------------------------------------
 

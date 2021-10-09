@@ -36,8 +36,6 @@ async function storeParapost(submission) {
     VALUES ($1)
   `;
   await db.query(queryParapost, [parapost]);
-
-  return null;
 }
 
 module.exports = { getParapost, storeParapost };

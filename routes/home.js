@@ -1,10 +1,10 @@
 'use strict';
 
 const { layout } = require('../layout.js');
-const { getParapost } = require('../database/model.js');
+const model = require('../database/model.js');
 
 function get(req, res) {
-  getParapost().then((data) => {
+  model.getParapost().then((data) => {
     const parapost = data.map((post) => {
       return /*html*/ `
       <div>
@@ -17,8 +17,10 @@ function get(req, res) {
     const home = /*html*/ `
     <h1>This is the homepage!!</h1>
     <form action='/' method='POST'>
-      <label for='text-post'>Add your thoughts</label>
-      <input type="text" id='text-post' name='text-post' />
+      <label for='username'>Name</label>
+      <input type="text" id='username' name='username' />
+      <label for='parapost'>Thoughts</label>
+      <input type="text" id='parapost' name='parapost' />
       <button type='submit'>Submit</button>
     </form>
 
@@ -30,8 +32,9 @@ function get(req, res) {
 }
 
 function post(req, res) {
-  console.log(req.body);
-  res.redirect('/');
+  model.storeParapost(req.body).then(() => {
+    res.redirect('/');
+  });
 }
 
 module.exports = { get, post };
