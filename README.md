@@ -10,6 +10,11 @@ An app to log the unlikely.-
 
 ## Things I am learning while building the application ✨
 
+### Environment variables 🦀
+
+In the file `connection.js` the is not working: `connectionString: process.env.DATABASE_URL,` 🤔
+_Instead_, this does: `connectionString: 'postgres://paraloguser:pass123@localhost:5432/paralog'`
+
 ### Sample `API` 😃
 
 - Array of objects as data:

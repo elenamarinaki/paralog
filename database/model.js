@@ -14,12 +14,10 @@ function getParapost() {
   console.log('im HEREEEEEEE');
   console.log(queryStr);
 
-  if (queryStr != '') {
-    return db.query(queryStr).then((result) => {
-      console.log(result.rows);
-      return result.rows;
-    });
-  }
+  return db.query(queryStr).then((result) => {
+    console.log(result.rows);
+    return result.rows;
+  });
 }
 
 async function storeParapost(submission) {
