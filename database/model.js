@@ -17,7 +17,7 @@ function getParapost() {
   if (queryStr != '') {
     return db.query(queryStr).then((result) => {
       console.log(result.rows);
-      result.rows;
+      return result.rows;
     });
   }
 }

@@ -5,7 +5,8 @@ const pg = require('pg');
 // }
 
 const options = {
-  connectionString: process.env.DATABASE_URL,
+  // connectionString: process.env.DATABASE_URL,
+  connectionString: 'postgres://paraloguser:pass123@localhost:5432/paralog',
 };
 
 const db = new pg.Pool(options);
