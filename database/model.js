@@ -9,7 +9,7 @@ function getParapost() {
     paraposts.parapost 
     FROM users 
     JOIN paraposts 
-    ON users.id = paraposts.user_id 
+    ON users.id = paraposts.id 
     `;
   console.log('im HEREEEEEEE');
   console.log(queryStr);
