@@ -13,12 +13,20 @@ function getParaposts() {
 }
 
 async function createParapost(id, parapost) {
-  const queryParapost = /*sql*/ `
+  const queryStr = /*sql*/ `
     INSERT INTO
     paraposts (user_id, parapost, created_at)
     VALUES ($1, $2, (SELECT CURRENT_TIMESTAMP))
   `;
-  await db.query(queryParapost, [id, parapost]);
+  await db.query(queryStr, [id, parapost]);
 }
 
-module.exports = { getParaposts, createParapost };
+function createSession(sid, data) {
+  const queryStr = /*sql*/ `
+  INSERT INTO sessions (sid, data) VALUES ($1, $2)
+  RETURNING sid
+  `;
+  return db.query(queryStr, [sid, data]).then((result) => result.rows[0].sid);
+}
+
+module.exports = { getParaposts, createParapost, createSession };
