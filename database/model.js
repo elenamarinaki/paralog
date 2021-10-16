@@ -29,4 +29,14 @@ function createSession(sid, data) {
   return db.query(queryStr, [sid, data]).then((result) => result.rows[0].sid);
 }
 
-module.exports = { getParaposts, createParapost, createSession };
+function getSession(sid) {
+  const queryStr = /*sql*/ `
+    SELECT data FROM sessions WHERE sid=$1
+  `;
+  return db.query(queryStr, [sid]).then((result) => {
+    const res = result.rows[0];
+    return res && res.data;
+  });
+}
+
+module.exports = { getParaposts, createParapost, createSession, getSession };
