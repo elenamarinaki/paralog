@@ -1,5 +1,11 @@
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const model = require('./database/model');
+
+function saveUserSession(user) {
+  const sid = crypto.randomBytes(18).toString('base64');
+  return model.createSession(sid, { user });
+}
 
 const COOKIE_OPTIONS = {
   httpOnly: true,
@@ -8,4 +14,4 @@ const COOKIE_OPTIONS = {
   signed: true,
 };
 
-module.exports = { COOKIE_OPTIONS };
+module.exports = { saveUserSession, COOKIE_OPTIONS };
