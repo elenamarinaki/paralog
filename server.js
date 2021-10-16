@@ -4,7 +4,10 @@ const express = require('express');
 const functions = require('./routes/functions');
 const items = require('./Items');
 const { layout } = require('./layout');
+
+const intro = require('./routes/intro');
 const home = require('./routes/home');
+const signup = require('./routes/signup');
 
 const db = require('./database/connection.js');
 
@@ -29,6 +32,8 @@ const entry = {
 
 // ⚠  can use only one server.use()
 // server.use(() => console.log('hello'));
+
+server.get('/', intro.get);
 
 server.get('/home', home.get);
 server.post('/home', home.post);
