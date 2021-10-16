@@ -6,9 +6,17 @@ const items = require('./Items');
 const { layout } = require('./layout');
 const home = require('./routes/home');
 
+const db = require('./database/connection.js');
+
 const server = express();
 
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+dotenv.config();
+
 server.use(express.urlencoded({ extended: false }));
+
+server.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Static file location
 server.use(express.static('./public'));
