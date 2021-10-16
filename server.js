@@ -8,7 +8,7 @@ const home = require('./routes/home');
 
 const server = express();
 
-const bodyParser = express.urlencoded({ extended: false });
+server.use(express.urlencoded({ extended: false }));
 
 // Static file location
 server.use(express.static('./public'));
@@ -22,8 +22,8 @@ const entry = {
 // ⚠  can use only one server.use()
 // server.use(() => console.log('hello'));
 
-server.get('/', home.get);
-server.post('/', bodyParser, home.post);
+server.get('/home', home.get);
+server.post('/home', home.post);
 
 // ----------------------------------------------------
 

@@ -4,11 +4,10 @@ const { layout } = require('../layout.js');
 const model = require('../database/model.js');
 
 function get(req, res) {
-  model.getParapost().then((data) => {
+  model.getParaposts().then((data) => {
     const parapost = data.map((post) => {
       return /*html*/ `
       <div>
-        <h3>${post.username}</h3>
         <p>${post.parapost}</p>
       </div>
     `;
@@ -17,14 +16,12 @@ function get(req, res) {
     const home = /*html*/ `
     <h1>This is the homepage!!</h1>
     <form action='/' method='POST'>
-      <label for='username'>Name</label>
-      <input type="text" id='username' name='username' />
       <label for='parapost'>Thoughts</label>
       <input type="text" id='parapost' name='parapost' />
       <button type='submit'>Submit</button>
     </form>
 
-    ${parapost}
+    ${parapost.join('')}
   `;
 
     res.send(layout('Home', home));
@@ -32,9 +29,13 @@ function get(req, res) {
 }
 
 function post(req, res) {
-  model.storeParapost(req.body).then(() => {
-    res.redirect('/');
-  });
+  const { id, parapost } = req.body;
+  model
+    .createParapost(id, parapost)
+    .then(() => {
+      res.redirect('/home');
+    })
+    .catch(console.log);
 }
 
 module.exports = { get, post };

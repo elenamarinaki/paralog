@@ -2,40 +2,23 @@
 
 const db = require('./connection.js');
 
-function getParapost() {
+function getParaposts() {
   const queryStr = /*sql*/ `
-    SELECT 
-    users.username, 
-    paraposts.parapost 
-    FROM users 
-    JOIN paraposts 
-    ON users.id = paraposts.id 
+    SELECT id, parapost, user_id FROM paraposts
     `;
-  console.log('im HEREEEEEEE');
-  console.log(queryStr);
-
   return db.query(queryStr).then((result) => {
     console.log(result.rows);
     return result.rows;
   });
 }
 
-async function storeParapost(submission) {
-  const { username, parapost } = submission;
-
-  const queryUser = /*sql*/ `
-    INSERT INTO
-    users(username)
-    VALUES ($1)
-  `;
-  await db.query(queryUser, [username]);
-
+async function createParapost(id, parapost) {
   const queryParapost = /*sql*/ `
     INSERT INTO
-    paraposts(parapost)
-    VALUES ($1)
+    paraposts (user_id, parapost, created_at)
+    VALUES ($1, $2, (SELECT CURRENT_TIMESTAMP))
   `;
-  await db.query(queryParapost, [parapost]);
+  await db.query(queryParapost, [id, parapost]);
 }
 
-module.exports = { getParapost, storeParapost };
+module.exports = { getParaposts, createParapost };
