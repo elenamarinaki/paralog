@@ -14,12 +14,10 @@ function layout(title, content) {
             <meta name="author" content="Elena Marinaki" />
             <title>${title}</title>
         </head>
-        <body>
-            <header>
-                <h1>Hello!!</h1>
-            </header>
-
-            <main class="center width-sm stack-lg">
+        <body>    
+            ${content}
+            
+            <footer>
                 <section>
                     <div class="row">
                         Made by @elenamarinaki
@@ -29,9 +27,7 @@ function layout(title, content) {
                     </div>
                     </div>
                 </section>
-                ${content}
-            
-            </main>
+            </footer>
         </body>
     </html>
     `;

@@ -9,14 +9,12 @@ function get(req, res) {
     <header>
         <h1>Paralog 🪵</h1>
     </header>
-    <main>
-        <section>
-            <div>
-                <a href="/signup" id='signup'>Sign-Up</a>
-                <a href="/login" id='login'>Log-in</a>
-            </div>
-        </section>
-    </main>
+    <section>
+        <div>
+            <a href="/signup" id='signup'>Sign-Up</a>
+            <a href="/login" id='login'>Log-in</a>
+        </div>
+    </section>
     `;
   res.send(layout('Hello!', html));
 }
